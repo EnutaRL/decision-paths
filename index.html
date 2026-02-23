@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Decision Paths</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    #explanation {
+      margin-top: 20px;
+      font-style: italic;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Decision Paths</h1>
+  <p id="story"></p>
+
+  <button id="choice1"></button>
+  <button id="choice2"></button>
+
+  <p id="explanation"></p>
+
+  <script>
+    const storyData = {
+      1: {
+        text: "You walk into your first university class. A student looks at you briefly.",
+        choices: [
+          {
+            text: "They seem judgmental.",
+            next: 2,
+            explanation: "This reflects the fundamental attribution error — assuming traits instead of situational factors."
+          },
+          {
+            text: "They’re probably just distracted.",
+            next: 3,
+            explanation: "This reflects situational attribution — considering context over personality."
+          }
+        ]
+      },
+
+      2: {
+        text: "You hesitate before sitting down.",
+        choices: [
+          {
+            text: "Sit in the back.",
+            next: null,
+            explanation: "Avoidance behavior can be reinforced when it reduces anxiety."
+          },
+          {
+            text: "Sit in the front.",
+            next: null,
+            explanation: "Approach behavior can build positive reinforcement over time."
+          }
+        ]
+      },
+
+      3: {
+        text: "You smile slightly and sit nearby.",
+        choices: [
+          {
+            text: "Introduce yourself.",
+            next: null,
+            explanation: "Social initiative increases chances of reciprocal interaction."
+          },
+          {
+            text: "Stay quiet.",
+            next: null,
+            explanation: "Social restraint may reflect risk aversion in uncertain settings."
+          }
+        ]
+      }
+    };
+
+    let currentNode = 1;
+
+    function loadNode(nodeId) {
+      const node = storyData[nodeId];
+      document.getElementById("story").innerText = node.text;
+
+      document.getElementById("choice1").innerText = node.choices[0].text;
+      document.getElementById("choice2").innerText = node.choices[1].text;
+
+      document.getElementById("explanation").innerText = "";
+
+      document.getElementById("choice1").onclick = () => handleChoice(node.choices[0]);
+      document.getElementById("choice2").onclick = () => handleChoice(node.choices[1]);
+    }
+
+    function handleChoice(choice) {
+      document.getElementById("explanation").innerText = choice.explanation;
+
+      if (choice.next !== null) {
+        setTimeout(() => {
+          loadNode(choice.next);
+        }, 2000);
+      }
+    }
+
+    loadNode(currentNode);
+  </script>
+
+</body>
+</html>
