@@ -33,85 +33,92 @@
 
   <p id="explanation"></p>
 
-  <script>
-    const storyData = {
-      1: {
-        text: "You walk into your first class of the day. A student looks at you briefly.",
-        choices: [
-          {
-            text: "They seem judgmental.",
-            next: 2,
-            explanation: "This reflects the fundamental attribution error — assuming traits instead of situational factors."
-          },
-          {
-            text: "They’re probably just distracted.",
-            next: 3,
-            explanation: "This reflects situational attribution — considering context over personality."
-          }
-        ]
-      },
+<script>
+const storyData = {
+  start: {
+    text: "You walk into your first class of the day. A student looks at you briefly.",
+    choices: [
+      { text: "They seem judgmental.", next: "hesitate", tag: "fundamental" },
+      { text: "They're probably distracted.", next: "hesitate", tag: "situational" }
+    ]
+  },
 
-      2: {
-        text: "You hesitate before sitting down.",
-        choices: [
-          {
-            text: "Sit in the back.",
-            next: null,
-            explanation: "Avoidance behavior can be reinforced when it reduces anxiety."
-          },
-          {
-            text: "Sit in the front.",
-            next: null,
-            explanation: "Approach behavior can build positive reinforcement over time."
-          }
-        ]
-      },
+  hesitate: {
+    text: "You hesitate before sitting down.",
+    choices: [
+      { text: "Sit in the back.", next: "lecture", tag: "avoidance" },
+      { text: "Sit in the front.", next: "lecture", tag: "approach" }
+    ]
+  },
 
-      3: {
-        text: "You smile slightly and sit nearby.",
-        choices: [
-          {
-            text: "Introduce yourself.",
-            next: null,
-            explanation: "Social initiative increases chances of reciprocal interaction."
-          },
-          {
-            text: "Stay quiet.",
-            next: null,
-            explanation: "Social restraint may reflect risk aversion in uncertain settings."
-          }
-        ]
-      }
-    };
+  lecture: {
+    text: "The lecture starts and the professor asks a question.",
+    choices: [
+      { text: "Raise your hand.", next: "end", tag: "initiative" },
+      { text: "Stay quiet.", next: "end", tag: "risk_aversion" }
+    ]
+  }
+};
 
-    let currentNode = 1;
+const explanations = {
+  fundamental: "Fundamental Attribution Error: assuming someone's behavior reflects personality instead of situation.",
+  situational: "Situational Attribution: considering external factors influencing behavior.",
+  avoidance: "Avoidance Behavior: avoiding situations that may produce anxiety.",
+  approach: "Approach Behavior: moving toward potentially rewarding social situations.",
+  initiative: "Social Initiative: taking action to interact increases positive reinforcement.",
+  risk_aversion: "Risk Aversion: avoiding uncertain outcomes."
+};
 
-    function loadNode(nodeId) {
-      const node = storyData[nodeId];
-      document.getElementById("story").innerText = node.text;
+let currentNode = "start";
+let playerTags = [];
 
-      document.getElementById("choice1").innerText = node.choices[0].text;
-      document.getElementById("choice2").innerText = node.choices[1].text;
+function loadNode(nodeId) {
+  const node = storyData[nodeId];
 
-      document.getElementById("explanation").innerText = "";
+  document.getElementById("story").innerText = node.text;
 
-      document.getElementById("choice1").onclick = () => handleChoice(node.choices[0]);
-      document.getElementById("choice2").onclick = () => handleChoice(node.choices[1]);
-    }
+  document.getElementById("choice1").innerText = node.choices[0].text;
+  document.getElementById("choice2").innerText = node.choices[1].text;
 
-    function handleChoice(choice) {
-      document.getElementById("explanation").innerText = choice.explanation;
+  document.getElementById("choice1").onclick = () => handleChoice(node.choices[0]);
+  document.getElementById("choice2").onclick = () => handleChoice(node.choices[1]);
+}
 
-      if (choice.next !== null) {
-        setTimeout(() => {
-          loadNode(choice.next);
-        }, 2000);
-      }
-    }
+function handleChoice(choice) {
 
-    loadNode(currentNode);
-  </script>
+  playerTags.push(choice.tag);
+
+  if (choice.next === "end") {
+    showResults();
+  } else {
+    loadNode(choice.next);
+  }
+}
+
+function showResults() {
+
+  document.getElementById("story").innerText = "Psychological Summary of Your Decisions";
+
+  document.getElementById("choice1").style.display = "none";
+  document.getElementById("choice2").style.display = "none";
+
+  const explanationBox = document.getElementById("explanation");
+
+  explanationBox.innerHTML = "";
+
+  const uniqueTags = [...new Set(playerTags)];
+
+  uniqueTags.forEach(tag => {
+    const p = document.createElement("p");
+    p.innerText = explanations[tag];
+    explanationBox.appendChild(p);
+  });
+}
+
+loadNode(currentNode);
+</script>
 
 </body>
 
 </html>
+
