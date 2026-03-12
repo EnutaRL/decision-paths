@@ -36,28 +36,389 @@
 <script>
 const storyData = {
   start: {
-    text: "You walk into your first class of the day. A student looks at you briefly.",
+    text: "WRITE PROMPT",
     choices: [
-      { text: "They seem judgmental.", next: "hesitate", tag: "fundamental" },
-      { text: "They're probably distracted.", next: "hesitate", tag: "situational" }
+      { text: "OPTION A", next: "node1", result: {decision:1, option:1} },
+      { text: "OPTION B", next: "node19", result: {decision:1, option:2} },
+      { text: "OPTION C", next: "node28", result: {decision:1, option:2} }
     ]
   },
 
-  hesitate: {
-    text: "You hesitate before sitting down.",
+  node1: {
+    text: "TEXT",
     choices: [
-      { text: "Sit in the back.", next: "lecture", tag: "avoidance" },
-      { text: "Sit in the front.", next: "lecture", tag: "approach" }
+      { text: "OPTION A", next: "node2", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node12", result: {decision:3, option:2} }
     ]
   },
 
-  lecture: {
-    text: "The lecture starts and the professor asks a question.",
+  node2: {
+    text: "TEXT",
     choices: [
-      { text: "Raise your hand.", next: "end", tag: "initiative" },
-      { text: "Stay quiet.", next: "end", tag: "risk_aversion" }
+      { text: "OPTION A", next: "node3", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node7", result: {decision:3, option:2} }
     ]
-  }
+  },
+
+  node3: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node4", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node4", result: {decision:3, option:2} }
+    ]
+  },
+
+  node4: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node5", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node5", result: {decision:3, option:2} }
+    ]
+  },
+  
+  node5: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node6", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node6", result: {decision:3, option:2} }
+    ]
+  },
+  
+  node6: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "endA", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "endB", result: {decision:3, option:2} }
+    ]
+  },
+
+  node7: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node8", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node8", result: {decision:3, option:2} }
+    ]
+  },
+
+  node8: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node9", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node10", result: {decision:3, option:2} }
+    ]
+  },
+
+  node9: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node6", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node6", result: {decision:3, option:2} }
+    ]
+  },
+
+  node10: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node11", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node11", result: {decision:3, option:2} }
+    ]
+  },
+
+  node11: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "endC", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "endD", result: {decision:3, option:2} }
+    ]
+  },
+
+  node12: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node13", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node14", result: {decision:3, option:2} }
+    ]
+  },
+
+  node13: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node4", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node4", result: {decision:3, option:2} }
+    ]
+  },
+
+  node14: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node15", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node15", result: {decision:3, option:2} }
+    ]
+  },
+
+  node15: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node16", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node16", result: {decision:3, option:2} }
+    ]
+  },
+
+  node16: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node17", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node18", result: {decision:3, option:2} }
+    ]
+  },
+
+  node17: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "endE", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "endE", result: {decision:3, option:2} }
+    ]
+  },
+
+  node18: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "endF", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "endG", result: {decision:3, option:2} }
+    ]
+  },
+
+  node19: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node20", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node26", result: {decision:3, option:2} }
+    ]
+  },
+
+  node20: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node21", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node21", result: {decision:3, option:2} }
+    ]
+  },
+
+  node21: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node22", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node22", result: {decision:3, option:2} }
+    ]
+  },
+  
+  node22: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node23", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node23", result: {decision:3, option:2} }
+    ]
+  },
+
+  node23: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node24", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node25", result: {decision:3, option:2} }
+    ]
+  },
+
+  node24: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "endH", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "endH", result: {decision:3, option:2} }
+    ]
+  },
+
+  node25: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "endI", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "endI", result: {decision:3, option:2} }
+    ]
+  },
+
+  node26: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node27", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node27", result: {decision:3, option:2} }
+    ]
+  },
+
+  node27: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node22", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node22", result: {decision:3, option:2} }
+    ]
+  },
+
+  node28: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node29", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node37", result: {decision:3, option:2} }
+    ]
+  },
+
+  node29: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node30", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node30", result: {decision:3, option:2} }
+    ]
+  },
+
+  node30: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node31", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node35", result: {decision:3, option:2} }
+    ]
+  },
+
+  node31: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node32", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node32", result: {decision:3, option:2} }
+    ]
+  },
+
+  node32: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node33", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node34", result: {decision:3, option:2} }
+    ]
+  },
+
+  node33: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "endJ", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "endJ", result: {decision:3, option:2} }
+    ]
+  },
+
+  node34: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "endK", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "endL", result: {decision:3, option:2} }
+    ]
+  },
+
+  node35: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node36", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node36", result: {decision:3, option:2} }
+    ]
+  },
+
+  node36: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node34", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node34", result: {decision:3, option:2} }
+    ]
+  },
+
+  node37: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node38", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node44", result: {decision:3, option:2} }
+    ]
+  },
+
+  node38: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node39", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node39", result: {decision:3, option:2} }
+    ]
+  },
+
+  node39: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node40", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node42", result: {decision:3, option:2} }
+    ]
+  },
+
+  node40: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node41", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node41", result: {decision:3, option:2} }
+    ]
+  },
+
+  node41: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "endM", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "endM", result: {decision:3, option:2} }
+    ]
+  },
+
+  node42: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node43", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node43", result: {decision:3, option:2} }
+    ]
+  },
+
+  node43: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "endN", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "endN", result: {decision:3, option:2} }
+    ]
+  },
+
+  node44: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node45", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node47", result: {decision:3, option:2} }
+    ]
+  },
+
+  node45: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node46", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node46", result: {decision:3, option:2} }
+    ]
+  },
+
+  node46: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node43", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node43", result: {decision:3, option:2} }
+    ]
+  },
+
+  node47: {
+    text: "TEXT",
+    choices: [
+      { text: "OPTION A", next: "node46", result: {decision:3, option:1} },
+      { text: "OPTION B", next: "node46", result: {decision:3, option:2} }
+    ]
+  },
 };
 
 const explanations = {
