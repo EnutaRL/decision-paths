@@ -295,17 +295,20 @@ function choose(choice) {
   const nextNode = story[choice.next];
 
   if (nextNode.ending) {
-    showEnding(nextNode.text);
+    showEnding(nextNode.text, nextNode.bg);
   } else {
     loadNode(choice.next);
-  }
+}
 }
 
 // SHOW ENDING
-function showEnding(text) {
+function showEnding(text, bg) {
   document.getElementById("gameScreen").classList.add("hidden");
   document.getElementById("endScreen").classList.remove("hidden");
-  document.getElementById("endingText").innerText = text;
+  
+  if (bg) changeBackground(bg);
+  
+  typeText(text, "endingText");
 }
 
 // SHOW ANALYSIS
