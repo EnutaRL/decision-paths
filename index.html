@@ -1,485 +1,228 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Decision Paths</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 50px auto;
-      text-align: center;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision Game</title>
 
-    button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  background: #f5f5f5;
+}
 
-    #explanation {
-      margin-top: 20px;
-      font-style: italic;
-      color: #444;
-    }
-  </style>
+.container {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+
+  padding: 20px;
+  border-radius: 16px;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+#story {
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.hidden {
+  display: none;
+}
+
+#analysis {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+</style>
 </head>
+
 <body>
 
-  <h1>Decision Paths</h1>
-  <p id="story"></p>
+<div class="container">
 
+<!-- START -->
+<div id="startScreen">
+  <h1>Decision Paths</h1>
+  <button onclick="startGame()">Play</button>
+</div>
+
+<!-- GAME -->
+<div id="gameScreen" class="hidden">
+  <p id="story"></p>
   <button id="choice1"></button>
   <button id="choice2"></button>
+</div>
 
-  <p id="explanation"></p>
+<!-- ENDING -->
+<div id="endScreen" class="hidden">
+  <p id="endingText"></p>
+  <button onclick="showAnalysis()">Continue</button>
+</div>
+
+<!-- ANALYSIS -->
+<div id="analysisScreen" class="hidden">
+  <h2>Your Decisions</h2>
+  <div id="analysis"></div>
+  <button onclick="location.reload()">Fin.</button>
+</div>
+
+</div>
 
 <script>
-const storyData = {
+
+// STORY
+const story = {
+
   start: {
-    text: "WRITE PROMPT",
+    text: "You wake up late. What do you do?",
     choices: [
-      { text: "OPTION A", next: "node1", result: {decision:1, option:1} },
-      { text: "OPTION B", next: "node19", result: {decision:1, option:2} },
-      { text: "OPTION C", next: "node28", result: {decision:1, option:2} }
+      { text: "Rush out immediately", next: "node1", label: "A" },
+      { text: "Take time to organize", next: "node2", label: "B" }
     ]
   },
 
   node1: {
-    text: "TEXT",
+    text: "You see someone drop their bag while you rush.",
     choices: [
-      { text: "OPTION A", next: "node2", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node12", result: {decision:3, option:2} }
+      { text: "Help them", next: "end1", label: "A" },
+      { text: "Ignore and keep going", next: "end2", label: "B" }
     ]
   },
 
   node2: {
-    text: "TEXT",
+    text: "You feel calm. A friend texts you.",
     choices: [
-      { text: "OPTION A", next: "node3", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node7", result: {decision:3, option:2} }
+      { text: "Reply", next: "end3", label: "A" },
+      { text: "Ignore", next: "end4", label: "B" }
     ]
   },
 
-  node3: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node4", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node4", result: {decision:3, option:2} }
-    ]
+  // ENDINGS (CUSTOMIZABLE STORY CONCLUSION)
+  end1: {
+    text: "You arrive late, but helped someone along the way.",
+    ending: true
   },
 
-  node4: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node5", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node5", result: {decision:3, option:2} }
-    ]
-  },
-  
-  node5: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node6", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node6", result: {decision:3, option:2} }
-    ]
-  },
-  
-  node6: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "endA", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "endB", result: {decision:3, option:2} }
-    ]
+  end2: {
+    text: "You arrive on time, but something feels off.",
+    ending: true
   },
 
-  node7: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node8", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node8", result: {decision:3, option:2} }
-    ]
+  end3: {
+    text: "You maintain connections but risk being late.",
+    ending: true
   },
 
-  node8: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node9", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node10", result: {decision:3, option:2} }
-    ]
-  },
-
-  node9: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node6", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node6", result: {decision:3, option:2} }
-    ]
-  },
-
-  node10: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node11", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node11", result: {decision:3, option:2} }
-    ]
-  },
-
-  node11: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "endC", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "endD", result: {decision:3, option:2} }
-    ]
-  },
-
-  node12: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node13", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node14", result: {decision:3, option:2} }
-    ]
-  },
-
-  node13: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node4", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node4", result: {decision:3, option:2} }
-    ]
-  },
-
-  node14: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node15", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node15", result: {decision:3, option:2} }
-    ]
-  },
-
-  node15: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node16", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node16", result: {decision:3, option:2} }
-    ]
-  },
-
-  node16: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node17", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node18", result: {decision:3, option:2} }
-    ]
-  },
-
-  node17: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "endE", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "endE", result: {decision:3, option:2} }
-    ]
-  },
-
-  node18: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "endF", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "endG", result: {decision:3, option:2} }
-    ]
-  },
-
-  node19: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node20", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node26", result: {decision:3, option:2} }
-    ]
-  },
-
-  node20: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node21", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node21", result: {decision:3, option:2} }
-    ]
-  },
-
-  node21: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node22", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node22", result: {decision:3, option:2} }
-    ]
-  },
-  
-  node22: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node23", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node23", result: {decision:3, option:2} }
-    ]
-  },
-
-  node23: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node24", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node25", result: {decision:3, option:2} }
-    ]
-  },
-
-  node24: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "endH", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "endH", result: {decision:3, option:2} }
-    ]
-  },
-
-  node25: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "endI", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "endI", result: {decision:3, option:2} }
-    ]
-  },
-
-  node26: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node27", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node27", result: {decision:3, option:2} }
-    ]
-  },
-
-  node27: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node22", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node22", result: {decision:3, option:2} }
-    ]
-  },
-
-  node28: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node29", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node37", result: {decision:3, option:2} }
-    ]
-  },
-
-  node29: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node30", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node30", result: {decision:3, option:2} }
-    ]
-  },
-
-  node30: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node31", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node35", result: {decision:3, option:2} }
-    ]
-  },
-
-  node31: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node32", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node32", result: {decision:3, option:2} }
-    ]
-  },
-
-  node32: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node33", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node34", result: {decision:3, option:2} }
-    ]
-  },
-
-  node33: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "endJ", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "endJ", result: {decision:3, option:2} }
-    ]
-  },
-
-  node34: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "endK", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "endL", result: {decision:3, option:2} }
-    ]
-  },
-
-  node35: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node36", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node36", result: {decision:3, option:2} }
-    ]
-  },
-
-  node36: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node34", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node34", result: {decision:3, option:2} }
-    ]
-  },
-
-  node37: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node38", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node44", result: {decision:3, option:2} }
-    ]
-  },
-
-  node38: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node39", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node39", result: {decision:3, option:2} }
-    ]
-  },
-
-  node39: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node40", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node42", result: {decision:3, option:2} }
-    ]
-  },
-
-  node40: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node41", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node41", result: {decision:3, option:2} }
-    ]
-  },
-
-  node41: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "endM", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "endM", result: {decision:3, option:2} }
-    ]
-  },
-
-  node42: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node43", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node43", result: {decision:3, option:2} }
-    ]
-  },
-
-  node43: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "endN", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "endN", result: {decision:3, option:2} }
-    ]
-  },
-
-  node44: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node45", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node47", result: {decision:3, option:2} }
-    ]
-  },
-
-  node45: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node46", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node46", result: {decision:3, option:2} }
-    ]
-  },
-
-  node46: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node43", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node43", result: {decision:3, option:2} }
-    ]
-  },
-
-  node47: {
-    text: "TEXT",
-    choices: [
-      { text: "OPTION A", next: "node46", result: {decision:3, option:1} },
-      { text: "OPTION B", next: "node46", result: {decision:3, option:2} }
-    ]
-  },
+  end4: {
+    text: "You stay focused and arrive prepared.",
+    ending: true
+  }
 };
 
-const explanations = {
-  fundamental: "Fundamental Attribution Error: assuming someone's behavior reflects personality instead of situation.",
-  situational: "Situational Attribution: considering external factors influencing behavior.",
-  avoidance: "Avoidance Behavior: avoiding situations that may produce anxiety.",
-  approach: "Approach Behavior: moving toward potentially rewarding social situations.",
-  initiative: "Social Initiative: taking action to interact increases positive reinforcement.",
-  risk_aversion: "Risk Aversion: avoiding uncertain outcomes."
-};
 
-let currentNode = "start";
-let playerTags = [];
+// EXPLANATIONS PER DECISION NUMBER
+const explanations = [
+  {
+    A: "Choice 1 (A): Acting quickly reflects urgency and possible loss aversion.",
+    B: "Choice 1 (B): Taking time shows planning and need for control."
+  },
+  {
+    A: "Choice 2 (A): Helping reflects prosocial behavior and empathy.",
+    B: "Choice 2 (B): Ignoring reflects goal-prioritization under pressure."
+  }
+];
 
-function loadNode(nodeId) {
-  const node = storyData[nodeId];
+let current = "start";
+let history = [];
+
+// START
+function startGame() {
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("gameScreen").classList.remove("hidden");
+  loadNode(current);
+}
+
+// LOAD NODE
+function loadNode(key) {
+  const node = story[key];
 
   document.getElementById("story").innerText = node.text;
 
   document.getElementById("choice1").innerText = node.choices[0].text;
   document.getElementById("choice2").innerText = node.choices[1].text;
 
-  document.getElementById("choice1").onclick = () => handleChoice(node.choices[0]);
-  document.getElementById("choice2").onclick = () => handleChoice(node.choices[1]);
+  document.getElementById("choice1").onclick = () => choose(node.choices[0]);
+  document.getElementById("choice2").onclick = () => choose(node.choices[1]);
 }
 
-function handleChoice(choice) {
+// CHOICE
+function choose(choice) {
+  history.push(choice.label);
 
-  playerTags.push(choice.tag);
+  const nextNode = story[choice.next];
 
-  if (choice.next === "end") {
-    showResults();
+  if (nextNode.ending) {
+    showEnding(nextNode.text);
   } else {
     loadNode(choice.next);
   }
 }
 
-function showResults() {
+// SHOW ENDING
+function showEnding(text) {
+  document.getElementById("gameScreen").classList.add("hidden");
+  document.getElementById("endScreen").classList.remove("hidden");
+  document.getElementById("endingText").innerText = text;
+}
 
-  document.getElementById("story").innerText = "Psychological Summary of Your Decisions";
+// SHOW ANALYSIS
+function showAnalysis() {
+  document.getElementById("endScreen").classList.add("hidden");
+  document.getElementById("analysisScreen").classList.remove("hidden");
 
-  document.getElementById("choice1").style.display = "none";
-  document.getElementById("choice2").style.display = "none";
+  const box = document.getElementById("analysis");
+  box.innerHTML = "";
 
-  const explanationBox = document.getElementById("explanation");
-
-  explanationBox.innerHTML = "";
-
-  const uniqueTags = [...new Set(playerTags)];
-
-  uniqueTags.forEach(tag => {
+  history.forEach((choice, index) => {
     const p = document.createElement("p");
-    p.innerText = explanations[tag];
-    explanationBox.appendChild(p);
+    p.innerText = explanations[index][choice];
+    box.appendChild(p);
   });
 }
 
-loadNode(currentNode);
 </script>
 
 </body>
-
 </html>
-
