@@ -237,7 +237,7 @@ function changeBackground(imageUrl) {
 // TYPING
 function typeText(text, elementId, speed = 25) {
   const el = document.getElementById(elementId);
-  el.innerText = "";
+  el.textContent = "";
 
   const btn1 = document.getElementById("choice1");
   const btn2 = document.getElementById("choice2");
@@ -251,7 +251,7 @@ function typeText(text, elementId, speed = 25) {
 
   function typing() {
     if (i < text.length) {
-      el.innerText += text.charAt(i);
+      el.textContent += text.charAt(i);
       i++;
       typingTimeout = setTimeout(typing, speed);
     } else {
