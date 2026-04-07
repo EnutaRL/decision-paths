@@ -8,10 +8,40 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
+
   display: flex;
-  justify-content: center;
-  background: #f5f5f5;
+  justify-content: center;   
+  align-items: center;      
+
+  min-height: 100dvh;  
+
+  flex-direction: column;
+
+  padding: 20px;
+
+  background-size: cover;
+  background-position: center;
+  
+}
+  
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-size: cover;
+  background-position: center;
+
+  transition: opacity 1s ease;
+  z-index: -1;
+
+  opacity: 0;
+}
+
+.bg.active {
+  opacity: 1;
 }
 
 .container {
@@ -26,11 +56,21 @@ body {
   border-radius: 16px;
 
   box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 #story {
   margin: 20px 0;
   font-size: 1.2rem;
+
+  line-height: 1.6;
+  text-align: left;
 }
 
 button {
@@ -70,6 +110,9 @@ button:active {
 
 <body>
 
+<div id="bg1" class="bg active"></div>
+<div id="bg2" class="bg"></div>
+
 <div class="container">
 
 <!-- START -->
@@ -88,25 +131,28 @@ button:active {
 <!-- ENDING -->
 <div id="endScreen" class="hidden">
   <p id="endingText"></p>
-  <button onclick="showAnalysis()">Continue</button>
+  <button onclick="showAnalysis()">Fin</button>
 </div>
 
 <!-- ANALYSIS -->
 <div id="analysisScreen" class="hidden">
   <h2>Your Decisions</h2>
   <div id="analysis"></div>
-  <button onclick="location.reload()">Fin.</button>
+  <button onclick="location.reload()">Replay.</button>
 </div>
 
 </div>
 
 <script>
 
+let typingTimeout;
+
 // STORY
 const story = {
 
   start: {
     text: "You wake up late. What do you do?",
+	bg: <!-- insert image -->
     choices: [
       { text: "Rush out immediately", next: "node1", label: "A" },
       { text: "Take time to organize", next: "node2", label: "B" }
@@ -123,13 +169,14 @@ const story = {
 
   node2: {
     text: "You feel calm. A friend texts you.",
+	
     choices: [
       { text: "Reply", next: "end3", label: "A" },
       { text: "Ignore", next: "end4", label: "B" }
     ]
   },
 
-  // ENDINGS (CUSTOMIZABLE STORY CONCLUSION)
+  // ENDINGS
   end1: {
     text: "You arrive late, but helped someone along the way.",
     ending: true
@@ -148,7 +195,7 @@ const story = {
   end4: {
     text: "You stay focused and arrive prepared.",
     ending: true
-  }
+  }	
 };
 
 
@@ -167,18 +214,71 @@ const explanations = [
 let current = "start";
 let history = [];
 
+// BACKGROUND
+let currentBg = 1;
+
+function changeBackground(imageUrl) {
+  const bg1 = document.getElementById("bg1");
+  const bg2 = document.getElementById("bg2");
+
+  const next = currentBg === 1 ? bg2 : bg1;
+  const current = currentBg === 1 ? bg1 : bg2;
+
+  next.style.backgroundImage =
+    `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${imageUrl})`;
+
+  next.classList.add("active");
+  current.classList.remove("active");
+
+  currentBg = currentBg === 1 ? 2 : 1;
+}
+
+// TYPING
+function typeText(text, elementId, speed = 25) {
+  const el = document.getElementById(elementId);
+  el.innerText = "";
+
+  const btn1 = document.getElementById("choice1");
+  const btn2 = document.getElementById("choice2");
+
+  btn1.disabled = true;
+  btn2.disabled = true;
+
+  clearTimeout(typingTimeout);
+
+  let i = 0;
+
+  function typing() {
+    if (i < text.length) {
+      el.innerText += text.charAt(i);
+      i++;
+      typingTimeout = setTimeout(typing, speed);
+    } else {
+      btn1.disabled = false;
+      btn2.disabled = false;
+    }
+  }
+
+  typing();
+}
+
 // START
 function startGame() {
   document.getElementById("startScreen").classList.add("hidden");
   document.getElementById("gameScreen").classList.remove("hidden");
-  loadNode(current);
+  changeBackground(story.start.bg);
+  loadNode("start");
 }
 
 // LOAD NODE
 function loadNode(key) {
   const node = story[key];
 
-  document.getElementById("story").innerText = node.text;
+   typeText(node.text, "story");
+
+  if (node.bg) {
+  changeBackground(node.bg);
+  }
 
   document.getElementById("choice1").innerText = node.choices[0].text;
   document.getElementById("choice2").innerText = node.choices[1].text;
@@ -222,7 +322,13 @@ function showAnalysis() {
   });
 }
 
+
 </script>
 
 </body>
 </html>
+
+
+
+
+<!-- I AM LOSING MY MINDDDDDDDDDDDDDDDDDDDDDDDDDDD -->
