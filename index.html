@@ -214,7 +214,7 @@ const story = {
   },
   
   node7: {
-    text: "After running away for what felt like seconds, Iris arrives at the edge of a huge forest. Behind him is a dingy dirt road where the cat bus passes every 15 minutes or so",
+    text: "After running away for what felt like seconds, Iris arrives at the edge of a huge forest. Behind him is a dingy dirt road where the cat bus passes every 15 minutes or so. He knows he is being chased by the fearsome Big Roach with its weapon the Big Shot. He could run away now and put some distance between them, or the cat bus could show up at the horizon line any minute now.",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
       { text: "Run, it is the safer option", next: "node8", label: "L" },
@@ -345,7 +345,7 @@ function changeBackground(imageUrl) {
 }
 
 // TYPING
-function typeText(text, elementId, speed = 100) {
+function typeText(text, elementId, speed = 8) {
   const el = document.getElementById(elementId);
   el.textContent = "";
 
