@@ -45,8 +45,8 @@ body {
 }
 
 .container {
-  width: 100%;
-  max-width: 500px;
+  width: 150%;
+  max-width: 750px;
   text-align: center;
 
   background: rgba(255, 255, 255, 0.9);
@@ -66,7 +66,7 @@ body {
 }
 
 #story {
-  margin: 20px 0;
+  margin: 18px 0;
   font-size: 1.2rem;
 
   line-height: 1.6;
@@ -152,7 +152,7 @@ const story = {
 
   start: {                                       
     text: "At long last, a new player has come to play the puppeteer. The stagelights beam, the curtain rises, a frigid silence gives goosebumps to the audience. Let us begin. Iris Peng is an 18 year old boy born in the suburbs. He is currently walking throught an empty city, the like of 'I Am Legend'. Only the sound of Iris stepping on small rocks can be heard. Suddenly, the sound of a siren bursts his eardrums; it reminds him of something unpleasant. This is your first choice, so think carefully (or not!) before choosing.",
-	bg: "https://static.vecteezy.com/system/resources/thumbnails/002/098/203/small/silver-tabby-cat-sitting-on-green-background-free-photo.jpg", //cat
+	bg: "https://cdna.artstation.com/p/assets/images/images/026/853/310/large/josep-picon-piconjosep1rfotomuntatge-final.jpg?1589908634", //abandoned city
     choices: [
       { text: "Go towards the noise, the source must be found", next: "node1", label: "L" },
       { text: "Leave, the noise does not exist if nobody is around", next: "node7", label: "R" }
@@ -160,8 +160,8 @@ const story = {
   },
 
   node1: {
-    text: "Sunlight blinds the eyes of the person who was asleep but a second ago. As he closes his alarm, he wonders if that dream of his was really him or two consciousnesses exist, meeting up every dream. Oh well, not time for that, Iris must get ready for school. After preparing for school, he leaves to take the bus. He likes to hum the melody of his latest obsession while having nothing to do, which happens to be 'Feel Good Inc'. At the bus station, Iris has now realized that the bus will be late by twenty minutes. He could make it in time to the train station if he runs now, but he has put on his best clothes for a presentation today and does not feel like sweating in them. However, taking the bus would then mean being late to the train which would then snowball into a tardiness of at least an hour.",
-	  bg: "https://hips.hearstapps.com/hmg-prod/images/ginger-maine-coon-kitten-running-on-lawn-in-royalty-free-image-1719608142.jpg?crop=1xw:0.84415xh;0,0.185xh", //cat
+    text: "Sunlight blinds the eyes of the person who was asleep but a second ago. As he closes his alarm, he wonders if that dream of his was really him or two consciousnesses exist, meeting up every dream. Oh well, not time for that, Iris must get ready for school. After prepping up, he leaves to take the bus. He likes to hum the melody of his latest obsession while having nothing to do, which happens to be 'Feel Good Inc'. At the bus station, Iris has now realized that the bus will be late by twenty minutes. He could make it in time to the train station if he runs now, but he has put on his best clothes for a presentation today and does not feel like sweating in them. However, taking the bus would then mean being late to the train which would then snowball into a tardiness of at least an hour.",
+	  bg: "https://www.itecanada.org/wp-content/uploads/2024/09/Floating-Bus-Stop-Design-Guide-cover-Credit-Brian-Patterson.jpeg", //bus stop
     choices: [
       { text: "Run, it is the safer option", next: "node2", label: "L" },
       { text: "Let's wait for the bus", next: "node2", label: "R" }
@@ -215,7 +215,7 @@ const story = {
   
   node7: {
     text: "After running away for what felt like seconds, Iris arrives at the edge of a huge forest. Behind him is a dingy dirt road where the cat bus passes every 15 minutes or so. He knows he is being chased by the fearsome Big Roach with its weapon the Big Shot. He could run away now and put some distance between them, or the cat bus could show up at the horizon line any minute now.",
-	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+	bg: "https://static.vecteezy.com/system/resources/previews/071/134/784/non_2x/an-old-bus-stop-with-a-map-on-the-ground-free-photo.jpg", //bus stop
     choices: [
       { text: "Run, it is the safer option", next: "node8", label: "L" },
       { text: "Let's wait for the bus", next: "node8", label: "R" }
@@ -223,68 +223,70 @@ const story = {
   },
   
   node8: {
-    text: "You arrived to school on time just as class started. Wonderful! ",
-	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    text: "Iris managed to get away safely. Phew! However, he must now face the dreadful sphynx who blocks the way to school. Only a real genius can solve his riddles. Fortunately, there are many others looking to get in. While the crowd is buzzing, the sphynx asks what his favourite movie is. Uh oh. If he answers wrong, that might displease the others. The huge statue is looking for someone to answer, rolling his stone eyes left to right.",
+	bg: "https://res.cloudinary.com/aenetworks/image/upload/c_fill,ar_2,w_3840,h_1920,g_auto/dpr_auto/f_auto/q_auto:eco/v1/the-sphinx-gettyimages-1183584133?_a=BAVMn6DY0", //sphynx
     choices: [
       { text: "Avert the eyes, the cogwork inside the head must appear to spin with difficulty, deep in thought", next: "node9", label: "L" },
-      { text: "Who cares? Even if the answer might be wrong, raise the left hand just enough to not seem like he's stretching", next: "node9", label: "R" }
+      { text: "Who cares? Even if the answer might be wrong, Iris should raise the left hand just enough to not seem like he's stretching", next: "node9", label: "R" }
     ]
   },
   
   node9: {
-    text: "You arrived to school on time just as class started. Wonderful! ",
-	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    text: "Someone else answered, but turns out Iris had it right: The Mummy, 1999. Before entering the school gates, he sees 2 clowns laughing at his appearance. Iris has long, long hair, not unlike that of Rapunzel. He can't quite remember why it grew so long, but he remembers that it was complimented on by someone dear to him.",
+	bg: "https://cdn.hswstatic.com/gif/how-clowns-work-orig.jpg", //clown
     choices: [
       { text: "Reply with calm", next: "node10", label: "L" },
       { text: "Reply with with a bit of aggressivity", next: "node10", label: "R" }
     ]
   },
   node10: {
-    text: "You arrived to school on time just as class started. Wonderful! ",
+    text: "Before Iris can even utter a word, the clowns drive away with a dozen more clowns in a miniscule car. After his first step into the building, the janitor comes to him and dumps trauma after trauma. Geez Louise, how has this guy suffered this much. Stubbed his toe, had a missing item in his food order, sent a private message to his work group... and that's not even mentioning the car splashing mud on his clothes.",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "node11", label: "L" },
-      { text: "Ignore", next: "node11", label: "R" }
+      { text: "Cheer him up and tell him to look at the bright side of life", next: "node11", label: "L" },
+      { text: "Be frank and give some honest advice", next: "node11", label: "R" }
     ]
   },
   
   node11: {
-    text: "You arrived to school on time just as class started. Wonderful! ",
+    text: "Did that work? Iris is too unexperienced to know if anything he said had any real impact, but the janitor calmed down and walked away. Anyways, class should start soon but the clock is broken so time won't make it to when class starts, how lucky.",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "node12", label: "L" },
-      { text: "Ignore", next: "node12", label: "R" }
+      { text: "Laze around, relax and do not think about school", next: "node12", label: "L" },
+      { text: "Free time means study time", next: "node12", label: "R" }
     ]
   },
   
     node12: {
-    text: "You arrived to school on time just as class started. Wonderful! ",
-	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    text: "While time is paused, Iris get offered an ornament by the librarian. It is a ring wich emits the same blaring siren which he has heard earlier. It is certainly not to Iris' taste and the sound is offputting to say the least, but she insists.",
+	bg: "hhttps://ouraring.com/blog/wp-content/uploads/2025/09/Blog-Hero-Image-2025-09-29T155241.663.png", //ring
     choices: [
-      { text: "Reply", next: "end", label: "L" },
-      { text: "Ignore", next: "end", label: "R" }
+      { text: "Kindly refuse it", next: "end3", label: "L" },
+      { text: "Take it and wear it only on some rare family occasions", next: "end4", label: "R" }
     ]
   },
   
   // ENDINGS
   end1: {
-    text: "You arrive late, but helped someone along the way.",
-	bg: "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_16x9.jpg?w=1200", //cat
+    text: "Mum looks at Iris with an unchanging expression, putting away the gift while asking him about his day. Nothing much he says. Nothing is good she says. After a nice dinner, Iris drifts off into the world of dreams once again.",
+	bg: "https://cdn.zmescience.com/wp-content/uploads/2025/04/1440_lucid_dreaming-feat_flip.jpg", //dreaming
     ending: true
   },
 
   end2: {
-    text: "You arrive on time, but something feels off.",
+    text: "He puts the necklace in a box, one to be forgotten and found years later when moving away. While appreciating the sentiment, he simply does not feel the cultural connection having lived in Canada his whole life. Lazily, he rests on his bed for what he believes to be 15 minutes, but will last until the next morning.",
+	bg: "https://www.helpguide.org/wp-content/uploads/2023/02/Sleep-in-Older-Adults.jpeg", //sleep
     ending: true
   },
 
   end3: {
-    text: "You maintain connections but risk being late.",
+    text: "Isn't beautiful, this adventure Iris went on, guided by you till the last word on your screen? There have been things so absurd that, even I can barely understand what was written, and I am supposed to be the narrator. There is, unfortunately, not much more to say. Admire what you have chosen and let us meet again the next time you open this page.",bg: "https://images.unsplash.com/photo-1514306191717-452ec28c7814?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVkJTIwY3VydGFpbnxlbnwwfHwwfHx8MA%3D%3D", //red curtains
     ending: true
   },
 
   end4: {
-    text: "You stay focused and arrive prepared.",
+    text: "Iris finally wakes up to shut that damn alarm. Seems like he has already missed 2 hours of class...",
+	bg: "https://cdn.thewirecutter.com/wp-content/media/2025/09/BEST-ALARM-CLOCKS-2048PX-OCT17-INLINE-V1.jpg?width=2048&quality=60&crop=2048:1366&auto=webp", //alarm
     ending: true
   }
 };
