@@ -150,33 +150,122 @@ let typingTimeout;
 // STORY
 const story = {
 
-  start: {
-    text: "You wake up late. What do you do?",
+  start: {                                       
+    text: "At long last, a new player has come to play the puppeteer. The stagelights beam, the curtain rises, a frigid silence gives goosebumps to the audience. Let us begin. Iris Peng is an 18 year old boy born in the suburbs. He is currently walking throught an empty city, the like of 'I Am Legend'. Only the sound of Iris stepping on small rocks can be heard. Suddenly, the sound of a siren bursts his eardrums; it reminds him of something unpleasant. This is your first choice,            ",
 	bg: "https://static.vecteezy.com/system/resources/thumbnails/002/098/203/small/silver-tabby-cat-sitting-on-green-background-free-photo.jpg", //cat
     choices: [
-      { text: "Rush out immediately", next: "node1", label: "A" },
-      { text: "Take time to organize", next: "node2", label: "B" }
+      { text: "Go towards the noise, the source must be found", next: "node1", label: "A" },
+      { text: "Leave, the noise does not exist if nobody is around", next: "node7", label: "B" }
     ]
   },
 
   node1: {
-    text: "You see someone drop their bag while you rush.",
+    text: "Sunlight blinds the eyes of the person who was asleep but a second ago. As he closes his alarm, he wonders if that dream of his was really him or two consciousnesses exist, meeting up every dream. Oh well, not time for that, Iris must get ready for school. After preparing for school, he leaves to take the bus. He likes to hum the melody of his latest obsession while having nothing to do, which happens to be 'Feel Good Inc'. At the bus station, Iris has now realized that the bus will be late by twenty minutes. He could make it in time to the train station if he runs now, but he has put on his best clothes for a presentation today and does not feel like sweating in them. However, taking the bus would then mean being late to the train which would then snowball into a tardiness of at least an hour.",
 	  bg: "https://hips.hearstapps.com/hmg-prod/images/ginger-maine-coon-kitten-running-on-lawn-in-royalty-free-image-1719608142.jpg?crop=1xw:0.84415xh;0,0.185xh", //cat
     choices: [
-      { text: "Help them", next: "end1", label: "A" },
-      { text: "Ignore and keep going", next: "end2", label: "B" }
+      { text: "Run, it is the safer option", next: "node2", label: "A" },
+      { text: "Let's wait for the bus", next: "node2", label: "B" }
     ]
   },
 
   node2: {
-    text: "You feel calm. A friend texts you.",
+    text: "Iris arrived to school on time just as class started. Wonderful! However, the back rows are filled and he must now sit in the front and make eye contact with the teacher, Oh the humanity! During class, the teacher asks a rather difficult question. He is 30% sure of the answer, but raising his hand would also mean potentially compromising himself. What if others now think that he is stupid? A complete nimrod? A shameful stain on the records of his family?",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "end3", label: "A" },
-      { text: "Ignore", next: "end4", label: "B" }
+      { text: "Avert the eyes, the cogwork inside the head must appear to spin with difficulty, deep in thought", next: "node3", label: "A" },
+      { text: "Who cares? Even if the answer might be wrong, raise the left hand just enough to not seem like he's stretching", next: "node3", label: "B" }
+    ]
+  },
+  
+  node3: {
+    text: "Iris was not chosen and turns out he had it incorrect. Simply means he must study that material with more care. Come the end of the class, he is humming Gorillaz again while waking to the next room he has to stay in for 2 hours. This time around, the class is empty save for two guys doing some weird ritual hoping for Playboi Carti to drop a new album. Fat chance. When they notice him, they present themselves as classmates in that course. One of the two boys inquires more about the story behind Iris' name, which causes him to react with a small unnoticeable wince. It is a touchy topic for Iris.", 
+	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    choices: [
+      { text: "Reply", next: "node3", label: "A" },
+      { text: "Escape the question", next: "node3", label: "B" }
     ]
   },
 
+  node4: {
+    text: "You arrived to school on time just as class started. Wonderful! ",
+	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    choices: [
+      { text: "Reply", next: "node3", label: "A" },
+      { text: "Ignore", next: "node3", label: "B" }
+    ]
+  },
+  
+  node5: {
+    text: "You arrived to school on time just as class started. Wonderful! ",
+	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    choices: [
+      { text: "Reply", next: "node3", label: "A" },
+      { text: "Ignore", next: "node3", label: "B" }
+    ]
+  },
+
+  node6: {
+    text: "You arrived to school on time just as class started. Wonderful! ",
+	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    choices: [
+      { text: "Reply", next: "end1", label: "A" },
+      { text: "Ignore", next: "end2", label: "B" }
+    ]
+  },
+  
+  node7: {
+    text: "You arrived to school on time just as class started. Wonderful! ",
+	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    choices: [
+      { text: "Reply", next: "node3", label: "A" },
+      { text: "Ignore", next: "node3", label: "B" }
+    ]
+  },
+  
+  node8: {
+    text: "You arrived to school on time just as class started. Wonderful! ",
+	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    choices: [
+      { text: "Reply", next: "node3", label: "A" },
+      { text: "Ignore", next: "node3", label: "B" }
+    ]
+  },
+  
+  node9: {
+    text: "You arrived to school on time just as class started. Wonderful! ",
+	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    choices: [
+      { text: "Reply", next: "node3", label: "A" },
+      { text: "Ignore", next: "node3", label: "B" }
+    ]
+  },
+  node10: {
+    text: "You arrived to school on time just as class started. Wonderful! ",
+	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    choices: [
+      { text: "Reply", next: "node3", label: "A" },
+      { text: "Ignore", next: "node3", label: "B" }
+    ]
+  },
+  
+  node11: {
+    text: "You arrived to school on time just as class started. Wonderful! ",
+	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    choices: [
+      { text: "Reply", next: "node3", label: "A" },
+      { text: "Ignore", next: "node3", label: "B" }
+    ]
+  },
+  
+    node12: {
+    text: "You arrived to school on time just as class started. Wonderful! ",
+	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
+    choices: [
+      { text: "Reply", next: "node3", label: "A" },
+      { text: "Ignore", next: "node3", label: "B" }
+    ]
+  },
+  
   // ENDINGS
   end1: {
     text: "You arrive late, but helped someone along the way.",
@@ -204,12 +293,12 @@ const story = {
 // EXPLANATIONS PER DECISION NUMBER
 const explanations = [
   {
-    A: "Choice 1 (A): Acting quickly reflects urgency and possible loss aversion.",
-    B: "Choice 1 (B): Taking time shows planning and need for control."
+    L: "Choice 1 (L): Acting quickly reflects urgency and possible loss aversion.",
+    R: "Choice 1 (R): Taking time shows planning and need for control."
   },
   {
-    A: "Choice 2 (A): Helping reflects prosocial behavior and empathy.",
-    B: "Choice 2 (B): Ignoring reflects goal-prioritization under pressure."
+    L: "Choice 2 (L): Helping reflects prosocial behavior and empathy.",
+    R: "Choice 2 (R): Ignoring reflects goal-prioritization under pressure."
   }
 ];
 
