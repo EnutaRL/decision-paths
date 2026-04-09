@@ -151,11 +151,11 @@ let typingTimeout;
 const story = {
 
   start: {                                       
-    text: "At long last, a new player has come to play the puppeteer. The stagelights beam, the curtain rises, a frigid silence gives goosebumps to the audience. Let us begin. Iris Peng is an 18 year old boy born in the suburbs. He is currently walking throught an empty city, the like of 'I Am Legend'. Only the sound of Iris stepping on small rocks can be heard. Suddenly, the sound of a siren bursts his eardrums; it reminds him of something unpleasant. This is your first choice,            ",
+    text: "At long last, a new player has come to play the puppeteer. The stagelights beam, the curtain rises, a frigid silence gives goosebumps to the audience. Let us begin. Iris Peng is an 18 year old boy born in the suburbs. He is currently walking throught an empty city, the like of 'I Am Legend'. Only the sound of Iris stepping on small rocks can be heard. Suddenly, the sound of a siren bursts his eardrums; it reminds him of something unpleasant. This is your first choice, so think carefully (or not!) before choosing.",
 	bg: "https://static.vecteezy.com/system/resources/thumbnails/002/098/203/small/silver-tabby-cat-sitting-on-green-background-free-photo.jpg", //cat
     choices: [
-      { text: "Go towards the noise, the source must be found", next: "node1", label: "A" },
-      { text: "Leave, the noise does not exist if nobody is around", next: "node7", label: "B" }
+      { text: "Go towards the noise, the source must be found", next: "node1", label: "L" },
+      { text: "Leave, the noise does not exist if nobody is around", next: "node7", label: "R" }
     ]
   },
 
@@ -163,62 +163,62 @@ const story = {
     text: "Sunlight blinds the eyes of the person who was asleep but a second ago. As he closes his alarm, he wonders if that dream of his was really him or two consciousnesses exist, meeting up every dream. Oh well, not time for that, Iris must get ready for school. After preparing for school, he leaves to take the bus. He likes to hum the melody of his latest obsession while having nothing to do, which happens to be 'Feel Good Inc'. At the bus station, Iris has now realized that the bus will be late by twenty minutes. He could make it in time to the train station if he runs now, but he has put on his best clothes for a presentation today and does not feel like sweating in them. However, taking the bus would then mean being late to the train which would then snowball into a tardiness of at least an hour.",
 	  bg: "https://hips.hearstapps.com/hmg-prod/images/ginger-maine-coon-kitten-running-on-lawn-in-royalty-free-image-1719608142.jpg?crop=1xw:0.84415xh;0,0.185xh", //cat
     choices: [
-      { text: "Run, it is the safer option", next: "node2", label: "A" },
-      { text: "Let's wait for the bus", next: "node2", label: "B" }
+      { text: "Run, it is the safer option", next: "node2", label: "L" },
+      { text: "Let's wait for the bus", next: "node2", label: "R" }
     ]
   },
 
   node2: {
-    text: "Iris arrived to school on time just as class started. Wonderful! However, the back rows are filled and he must now sit in the front and make eye contact with the teacher, Oh the humanity! During class, the teacher asks a rather difficult question. He is 30% sure of the answer, but raising his hand would also mean potentially compromising himself. What if others now think that he is stupid? A complete nimrod? A shameful stain on the records of his family?",
+    text: "Iris arrived to school on time just as class started. Wonderful! However, the back rows are filled and he must now sit in the front and make eye contact with the teacher. Oh the humanity! During class, the teacher asks a rather difficult question. He is 30% sure of the answer, but raising his hand would also mean potentially compromising himself. What if others now think that he is stupid? A complete nimrod? A shameful stain on the records of his family?",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Avert the eyes, the cogwork inside the head must appear to spin with difficulty, deep in thought", next: "node3", label: "A" },
-      { text: "Who cares? Even if the answer might be wrong, raise the left hand just enough to not seem like he's stretching", next: "node3", label: "B" }
+      { text: "Avert the eyes, the cogwork inside the head must appear to spin with difficulty, deep in thought", next: "node3", label: "L" },
+      { text: "Who cares? Even if the answer might be wrong, raise the left hand just enough to not seem like he's stretching", next: "node3", label: "R" }
     ]
   },
   
   node3: {
-    text: "Iris was not chosen and turns out he had it incorrect. Simply means he must study that material with more care. Come the end of the class, he is humming Gorillaz again while waking to the next room he has to stay in for 2 hours. This time around, the class is empty save for two guys doing some weird ritual hoping for Playboi Carti to drop a new album. Fat chance. When they notice him, they present themselves as classmates in that course. One of the two boys inquires more about the story behind Iris' name, which causes him to react with a small unnoticeable wince. It is a touchy topic for Iris.", 
+    text: "Iris was not chosen and turns out he had it incorrect. Simply means he must study that material with more care. Come the end of the class, he is humming Gorillaz again while waking to the next room he has to stay in for 2 hours. This time around, the class is empty save for two guys doing some weird ritual hoping for Playboi Carti to drop a new album. Fat chance. When they notice him, they present themselves as classmates in that course. One of the two boys inquires more about the story behind Iris' name, which causes Iris to react with a small unnoticeable wince. He says he finds it weirds that a man has the name of 'some flower'. It is a touchy topic for Iris.", 
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "node3", label: "A" },
-      { text: "Escape the question", next: "node3", label: "B" }
+      { text: "Reply with calm", next: "node4", label: "L" },
+      { text: "Reply with with a bit of aggressivity", next: "node4", label: "R" }
     ]
   },
 
   node4: {
-    text: "You arrived to school on time just as class started. Wonderful! ",
+    text: "Iris retorts that he is perfectly fine with his name, that his parents named him after the flower his mother loves, the flower offered by his father on his parents' first date, the flower representing elegance. Weirded out, the two guys return to their praying. During lunch, Iris sits with his group of friends. He eats the usual meal he brings, which is leftovers from yesterday's dinner. He listens to the conversation about PC specs and how the price of RAM has skyrocketed because of AI. Suddenly, Raphael pulls him aside to talk about something a bit more personal: the neighbour he had known since a kid died by suicide. She was his love interest that he never confessed and now it is too late. He is struggling to piece himself together and is doubtful of his place in the world. He wishes time could have stopped.",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "node3", label: "A" },
-      { text: "Ignore", next: "node3", label: "B" }
+      { text: "Cheer him up and tell him to look at the bright side of life", next: "node3", label: "L" },
+      { text: "Be frank and give some honest advice", next: "node3", label: "R" }
     ]
   },
   
   node5: {
-    text: "You arrived to school on time just as class started. Wonderful! ",
+    text: "Wether he was ready to hear that or not Iris will not know, but the bell rings before Raphael can respond. He utters a timid 'Thank you' before leaving for class. Iris still has a long break before his, so he wonders how to kill some time.",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "node3", label: "A" },
-      { text: "Ignore", next: "node3", label: "B" }
+      { text: "Laze around, relax and do not think about school", next: "node3", label: "L" },
+      { text: "Free time means study time", next: "node3", label: "R" }
     ]
   },
 
   node6: {
-    text: "You arrived to school on time just as class started. Wonderful! ",
+    text: "After his last class, Iris returns home. When opening the door of his house, his dad welcomes him, giving him a quick glance before looking back at the TV. The news reporter is announces that British Columbia has abandoned daylight savings time. How exciting. Back from her trip in Taiwan, his mum has brought back a gift for him: a necklace with a smiling fat buddah made of jade hanging. This is not very much in his style, but his mother is showing a radiant smile.",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "end1", label: "A" },
-      { text: "Ignore", next: "end2", label: "B" }
+      { text: "Kindly refuse it", next: "end1", label: "L" },
+      { text: "Take it and wear it only on some rare family occasions", next: "end2", label: "R" }
     ]
   },
   
   node7: {
-    text: "You arrived to school on time just as class started. Wonderful! ",
+    text: "After running away for what felt like seconds, Iris arrives at the entrance",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
-    choices: [
-      { text: "Reply", next: "node3", label: "A" },
-      { text: "Ignore", next: "node3", label: "B" }
+    choices: [ONt
+      { text: "Run, it is the safer option", next: "node8", label: "L" },
+      { text: "Let's wait for the bus", next: "node8", label: "R" }
     ]
   },
   
@@ -226,8 +226,8 @@ const story = {
     text: "You arrived to school on time just as class started. Wonderful! ",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "node3", label: "A" },
-      { text: "Ignore", next: "node3", label: "B" }
+      { text: "Avert the eyes, the cogwork inside the head must appear to spin with difficulty, deep in thought", next: "node9", label: "L" },
+      { text: "Who cares? Even if the answer might be wrong, raise the left hand just enough to not seem like he's stretching", next: "node9", label: "R" }
     ]
   },
   
@@ -235,16 +235,16 @@ const story = {
     text: "You arrived to school on time just as class started. Wonderful! ",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "node3", label: "A" },
-      { text: "Ignore", next: "node3", label: "B" }
+      { text: "Reply with calm", next: "node10", label: "L" },
+      { text: "Reply with with a bit of aggressivity", next: "node10", label: "R" }
     ]
   },
   node10: {
     text: "You arrived to school on time just as class started. Wonderful! ",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "node3", label: "A" },
-      { text: "Ignore", next: "node3", label: "B" }
+      { text: "Reply", next: "node11", label: "L" },
+      { text: "Ignore", next: "node11", label: "R" }
     ]
   },
   
@@ -252,8 +252,8 @@ const story = {
     text: "You arrived to school on time just as class started. Wonderful! ",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "node3", label: "A" },
-      { text: "Ignore", next: "node3", label: "B" }
+      { text: "Reply", next: "node12", label: "L" },
+      { text: "Ignore", next: "node12", label: "R" }
     ]
   },
   
@@ -261,8 +261,8 @@ const story = {
     text: "You arrived to school on time just as class started. Wonderful! ",
 	bg: "https://upload.wikimedia.org/wikipedia/commons/1/15/Cat_August_2010-4.jpg", //cat
     choices: [
-      { text: "Reply", next: "node3", label: "A" },
-      { text: "Ignore", next: "node3", label: "B" }
+      { text: "Reply", next: "end", label: "L" },
+      { text: "Ignore", next: "end", label: "R" }
     ]
   },
   
@@ -293,13 +293,32 @@ const story = {
 // EXPLANATIONS PER DECISION NUMBER
 const explanations = [
   {
-    L: "Choice 1 (L): Acting quickly reflects urgency and possible loss aversion.",
-    R: "Choice 1 (R): Taking time shows planning and need for control."
-  },
-  {
-    L: "Choice 2 (L): Helping reflects prosocial behavior and empathy.",
-    R: "Choice 2 (R): Ignoring reflects goal-prioritization under pressure."
+    L: "Choice 1 (L): Information seeking bias",
+    R: "Choice 1 (R): Avoidance coping"
   }
+  {
+    L: "Choice 2 (L): Risk aversion",
+    R: "Choice 2 (R): Present bias"
+  }
+  {
+    L: "Choice 3 (L): Evaluation apprehension.",
+    R: "Choice 3 (R): Growth mindset"
+  }
+  {
+    L: "Choice 4 (L): Cognitive reappraisal",
+    R: "Choice 4 (R): Ego defense"
+  }
+  {
+    L: "Choice 5 (L): Emotional cushioning",
+    R: "Choice 5 (R): Problem-focused coping."
+  }
+  {
+    L: "Choice 6 (L): Temporal discounting",
+    R: "Choice 6 (R): Delayed gratification"
+  {
+    L: "Choice 7 (L): Authenticity bias",
+    R: "Choice 7 (R): Normative social influence"
+  },
 ];
 
 let current = "start";
@@ -325,7 +344,7 @@ function changeBackground(imageUrl) {
 }
 
 // TYPING
-function typeText(text, elementId, speed = 25) {
+function typeText(text, elementId, speed = 50) {
   const el = document.getElementById(elementId);
   el.textContent = "";
 
